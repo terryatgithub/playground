@@ -1,0 +1,7 @@
+{
+  "name": "client",
+  "version": "0.0.1",
+  "description": "client playground",
+  "main": "index.js",
+  "license": "MIT"
+}
