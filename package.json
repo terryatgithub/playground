@@ -8,8 +8,6 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "server-nestjs",
-    "client",
     "packages/*"
   ],
   "devDependencies": {
