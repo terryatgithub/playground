@@ -50,11 +50,13 @@
 
   <script>
     // https://developer.mozilla.org/zh-CN/docs/Web/API/File_API/Using_files_from_web_applications#%E4%BE%8B%E5%AD%90%EF%BC%9A%E7%94%A8%E5%AF%B9%E8%B1%A1_url_%E6%98%BE%E7%A4%BA_pdf
+    // https://ionic.io/blog/converting-a-base64-string-to-a-blob-in-javascript
     window.URL = window.URL || window.webkitURL;
 
     // https://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
     const b64toBlob = (base64, type = 'application/octet-stream') =>
       fetch(`data:${type};base64,${base64}`).then(res => res.blob())
+
     async function handleImage() {
       var b = pdfBase64_145k;
       const blob = await b64toBlob(b, 'application/pdf')
@@ -64,8 +66,8 @@
 
       const iframe = document.getElementById('viewer');
       iframe.setAttribute('src', blobUrl);
-      // FIX issue: Safari desktop can not work 
-      // still fail in Chrome mobile. with following error: 
+      // FIX issue: Safari desktop can not work
+      // still fail in Chrome mobile, with following error: 
       // 'Not allowed to load local resource: blob:http://192.168.18.250:3000/7319a3ac-cdda-47d9-8365-f11124382e69'
       setTimeout(() => {
         window.URL.revokeObjectURL(blobUrl);
